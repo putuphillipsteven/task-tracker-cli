@@ -103,7 +103,23 @@ public class TaskRepository implements TaskInterface {
         }
     }
 
+    @Override
+    public void markInProgress(int id) {
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
+
+        task.markInProgress();
+
+        saveTask();
+
+        Task updatedTask = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
+
+        System.out.println(updatedTask);
+    }
+
     public Optional<Task> findTask(int id) {
         return tasks.stream().filter((task -> task.getId() == id)).findFirst();
     }
+
+
+
 }

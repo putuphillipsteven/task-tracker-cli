@@ -9,4 +9,5 @@ public interface TaskInterface {
     void updateTask(int id, String description);
     void deleteTask(int id);
     void saveTask();
+    void markInProgress(int id);
 }
