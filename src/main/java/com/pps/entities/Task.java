@@ -55,4 +55,8 @@ public class Task {
         return "id: " + id + ", description: " + description.strip() + ", status: " + status.toString() +
                 ", createdAt: " + createdAt.format(formatter) + ", updatedAt: " + updatedAt.format(formatter);
     }
+
+    public int getId() {
+        return id;
+    }
 }

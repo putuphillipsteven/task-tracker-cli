@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TaskRepository implements TaskInterface {
     private final Path FILE_PATH = Path.of("tasks.json");
@@ -45,12 +46,13 @@ public class TaskRepository implements TaskInterface {
     }
 
     @Override
-    public void addTask(String description) {
+    public Task addTask(String description) {
         Task newTask = new Task(description);
-        System.out.println("NEW TASK: " + newTask);
         tasks.add(newTask);
-        System.out.println("Task add successfully");
+        System.out.println("Task add successfully :");
+        System.out.println(newTask);
         this.saveTask();
+        return newTask;
     }
 
     @Override
@@ -66,7 +68,13 @@ public class TaskRepository implements TaskInterface {
 
     @Override
     public void deleteTask(int id) {
+        Task task = findTask(id).orElseThrow(()->new IllegalArgumentException("Task with ID " + id + " not found!"));
 
+        tasks.remove(task);
+
+        System.out.println("Task with ID " + id + " deleted successfully");
+
+        saveTask();
     }
 
     @Override
@@ -87,5 +95,9 @@ public class TaskRepository implements TaskInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Optional<Task> findTask(int id) {
+        return tasks.stream().filter((task -> task.getId() == id)).findFirst();
     }
 }

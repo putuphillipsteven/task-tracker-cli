@@ -11,7 +11,7 @@ public class Main {
     private static TaskController taskController = new TaskController(taskInteractor);
 
     public static void main(String[] args) {
-        taskController.viewTask(Statuses.TO_DO);
-        taskController.addTask("Testing Third Tasks");
+//        taskController.addTask("Testing Third Tasks");
+//        taskController.viewTask(Statuses.TO_DO);
     }
 }

@@ -1,6 +1,7 @@
 package com.pps.controllers;
 
 import com.pps.entities.Statuses;
+import com.pps.entities.Task;
 import com.pps.interactors.TaskInteractor;
 import com.pps.interfaces.TaskInterface;
 
@@ -12,9 +13,9 @@ public class TaskController implements TaskInterface {
     }
 
     @Override
-    public void addTask(String description) {
-        this.taskInteractor.addTask(description);
-        this.taskInteractor.saveTask();
+    public Task addTask(String description) {
+        Task newTask = this.taskInteractor.addTask(description);
+        return newTask;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class TaskController implements TaskInterface {
 
     @Override
     public void deleteTask(int id) {
-
+        this.taskInteractor.deleteTask(id);
     }
 
     @Override

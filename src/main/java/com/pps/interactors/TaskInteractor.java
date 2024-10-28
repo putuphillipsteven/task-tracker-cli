@@ -1,6 +1,7 @@
 package com.pps.interactors;
 
 import com.pps.entities.Statuses;
+import com.pps.entities.Task;
 import com.pps.interfaces.TaskInterface;
 import com.pps.repositories.TaskRepository;
 
@@ -12,8 +13,9 @@ public class TaskInteractor implements TaskInterface {
     }
 
     @Override
-    public void addTask(String description) {
-        taskRepository.addTask(description);
+    public Task addTask(String description) {
+        Task newTask = taskRepository.addTask(description);
+        return  newTask;
     }
 
     @Override
