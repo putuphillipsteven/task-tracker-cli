@@ -13,5 +13,6 @@ public class Main {
     public static void main(String[] args) {
 //        taskController.addTask("Testing Third Tasks");
 //        taskController.viewTask(Statuses.TO_DO);
+        taskController.updateTask(3, "Third Updated Description");
     }
 }

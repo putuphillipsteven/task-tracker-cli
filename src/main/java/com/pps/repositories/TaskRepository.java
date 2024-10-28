@@ -63,7 +63,13 @@ public class TaskRepository implements TaskInterface {
 
     @Override
     public void updateTask(int id, String description) {
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
 
+        task.updateTask(description);
+
+        System.out.println("Task with ID: " + id + " updated succesfully");
+
+        saveTask();
     }
 
     @Override

@@ -25,7 +25,7 @@ public class TaskController implements TaskInterface {
 
     @Override
     public void updateTask(int id, String description) {
-
+        this.taskInteractor.updateTask(id, description);
     }
 
     @Override

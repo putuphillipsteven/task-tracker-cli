@@ -2,7 +2,6 @@ package com.pps.test;
 
 import com.pps.controllers.TaskController;
 import com.pps.entities.Statuses;
-import com.pps.entities.Task;
 import com.pps.interactors.TaskInteractor;
 import com.pps.repositories.TaskRepository;
 
@@ -12,7 +11,7 @@ public class TestTaskRepository {
     private static TaskController taskController = new TaskController(taskInteractor);
     public static void main(String[] args) {
         testViewTask();
-        testRemoveTask();
+        testUpdateTask();
         testViewTask();
     }
 
@@ -30,5 +29,11 @@ public class TestTaskRepository {
         taskController.deleteTask(3);
         taskController.deleteTask(4);
         taskController.deleteTask(5);
+    }
+
+    public static void testUpdateTask() {
+        taskController.updateTask(3, "New Third Description");
+        taskController.updateTask(4, "New Fourth Description");
+        taskController.updateTask(5, "New Fifth Description");
     }
 }

@@ -21,6 +21,11 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
+    public void updateTask(String newDescription) {
+        this.description = newDescription;
+        this.updatedAt = LocalDateTime.now();
+    }
+
     public static Task fromJson(String json) {
         json = json.replace("{", "").replace("}", "").replace("\"", "");
         String[] json1 = json.split(",");
@@ -59,4 +64,6 @@ public class Task {
     public int getId() {
         return id;
     }
+
+
 }
