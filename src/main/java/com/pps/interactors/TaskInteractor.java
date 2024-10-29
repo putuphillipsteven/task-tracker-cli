@@ -35,11 +35,21 @@ public class TaskInteractor implements TaskInterface {
 
     @Override
     public void saveTask() {
-        this.taskRepository.saveTask();
+       taskRepository.saveTask();
+    }
+
+    @Override
+    public void markToDo(int id) {
+        taskRepository.markToDo(id);
     }
 
     @Override
     public void markInProgress(int id) {
+        taskRepository.markInProgress(id);
+    }
 
+    @Override
+    public void markDone(int id) {
+        taskRepository.markDone(id);
     }
 }

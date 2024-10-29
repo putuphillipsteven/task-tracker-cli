@@ -26,12 +26,20 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
+    public void markToDo() {
+        this.status = Statuses.TO_DO;
+        this.updatedAt = LocalDateTime.now();
+    }
+
     public void markInProgress() {
         this.status = Statuses.IN_PROGRESS;
         this.updatedAt = LocalDateTime.now();
     }
 
-
+    public void markDone() {
+        this.status = Statuses.DONE;
+        this.updatedAt = LocalDateTime.now();
+    }
 
     public static Task fromJson(String json) {
         json = json.replace("{", "").replace("}", "").replace("\"", "");
@@ -42,7 +50,6 @@ public class Task {
         String statusString = json1[2].split(":")[1].strip();
         String createdAtStr = json1[3].split("[a-z]:")[1].strip();
         String updatedAtStr = json1[4].split("[a-z]:")[1].strip();
-
 
         Task task = new Task(description);
         task.id = Integer.parseInt(id);
@@ -71,6 +78,4 @@ public class Task {
     public int getId() {
         return id;
     }
-
-
 }

@@ -86,6 +86,7 @@ public class TaskRepository implements TaskInterface {
     @Override
     public void saveTask() {
         StringBuilder sb = new StringBuilder();
+
         sb.append("[\n");
         for (int i = 0; i < tasks.size(); i++) {
             sb.append(tasks.get(i).toJson());
@@ -93,14 +94,31 @@ public class TaskRepository implements TaskInterface {
                 sb.append(", \n");
             }
         }
+
         sb.append("\n]");
 
         String jsonContent = sb.toString();
+
         try {
             Files.writeString(FILE_PATH, jsonContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void markToDo(int id) {
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
+
+        task.markToDo();
+
+        saveTask();
+
+        Task updatedTask = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
+
+        System.out.println("Task with ID: " + id + " updated succesfully");
+
+        System.out.println(updatedTask);
     }
 
     @Override
@@ -113,13 +131,27 @@ public class TaskRepository implements TaskInterface {
 
         Task updatedTask = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
 
+        System.out.println("Task with ID: " + id + " updated succesfully");
+
+        System.out.println(updatedTask);
+    }
+
+    @Override
+    public void markDone(int id) {
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
+
+        task.markDone();
+
+        saveTask();
+
+        Task updatedTask = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found"));
+
+        System.out.println("Task with ID: " + id + " updated succesfully");
+
         System.out.println(updatedTask);
     }
 
     public Optional<Task> findTask(int id) {
         return tasks.stream().filter((task -> task.getId() == id)).findFirst();
     }
-
-
-
 }

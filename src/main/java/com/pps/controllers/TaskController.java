@@ -39,7 +39,17 @@ public class TaskController implements TaskInterface {
     }
 
     @Override
-    public void markInProgress(int id) {
+    public void markToDo(int id) {
+        this.taskInteractor.markToDo(id);
+    }
 
+    @Override
+    public void markInProgress(int id) {
+        this.taskInteractor.markInProgress(id);
+    }
+
+    @Override
+    public void markDone(int id) {
+        this.taskInteractor.markDone(id);
     }
 }
