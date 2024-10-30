@@ -12,7 +12,7 @@ public class TestTaskRepository {
 
     public static void main(String[] args) {
         testViewTask();
-        testMarkToDo();
+        testAddTask();
         testViewTask();
     }
 
