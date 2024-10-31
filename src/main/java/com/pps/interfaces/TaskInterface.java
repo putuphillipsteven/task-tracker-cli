@@ -12,4 +12,5 @@ public interface TaskInterface {
     void markToDo(int id);
     void markInProgress(int id);
     void markDone(int id);
+    void showAllTask();
 }

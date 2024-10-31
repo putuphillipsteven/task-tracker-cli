@@ -78,4 +78,8 @@ public class Task {
     public int getId() {
         return id;
     }
+
+    public Statuses getStatus() {
+        return status;
+    }
 }

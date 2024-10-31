@@ -2,6 +2,7 @@ import com.pps.controllers.TaskController;
 import com.pps.entities.Statuses;
 import com.pps.interactors.TaskInteractor;
 import com.pps.repositories.TaskRepository;
+import com.pps.util.CreateJSONDocument;
 
 public class Main {
     private static TaskRepository taskRepository = new TaskRepository();
@@ -11,9 +12,6 @@ public class Main {
     private static TaskController taskController = new TaskController(taskInteractor);
 
     public static void main(String[] args) {
-//        taskController.addTask("Testing Third Tasks");
-//        taskController.viewTask(Statuses.TO_DO);
-//        taskController.updateTask(3, "Third Updated Description");
-        taskRepository.markInProgress(3);
+        CreateJSONDocument.create();
     }
 }

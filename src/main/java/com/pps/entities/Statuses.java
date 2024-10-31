@@ -11,6 +11,13 @@ public enum Statuses {
         this.value = value;
     }
 
+//    public Statuses convertStatusesToString(String stringStatus) {
+//        switch (stringStatus) {
+//            case "To-do":
+//                return
+//        }
+//    }
+
     public String getValue() {
         return value;
     }

@@ -52,4 +52,9 @@ public class TaskController implements TaskInterface {
     public void markDone(int id) {
         this.taskInteractor.markDone(id);
     }
+
+    @Override
+    public void showAllTask() {
+        this.taskInteractor.showAllTask();
+    }
 }

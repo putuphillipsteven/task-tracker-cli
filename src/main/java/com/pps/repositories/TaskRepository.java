@@ -3,13 +3,13 @@ package com.pps.repositories;
 import com.pps.entities.Statuses;
 import com.pps.entities.Task;
 import com.pps.interfaces.TaskInterface;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class TaskRepository implements TaskInterface {
     private final Path FILE_PATH = Path.of("tasks.json");
@@ -58,7 +58,8 @@ public class TaskRepository implements TaskInterface {
     @Override
     public void viewTask(Statuses status) {
         System.out.println("Task List: ");
-        System.out.println(tasks);
+        System.out.println("Statuses: " + status);
+        System.out.println(findTaskByStatus(status));
     }
 
     @Override
@@ -151,7 +152,18 @@ public class TaskRepository implements TaskInterface {
         System.out.println(updatedTask);
     }
 
+    @Override
+    public void showAllTask() {
+        viewTask(Statuses.TO_DO);
+        viewTask(Statuses.IN_PROGRESS);
+        viewTask(Statuses.DONE);
+    }
+
     public Optional<Task> findTask(int id) {
         return tasks.stream().filter((task -> task.getId() == id)).findFirst();
+    }
+
+    public List<Task> findTaskByStatus(Statuses statuses) {
+        return tasks.stream().filter((task -> task.getStatus() == statuses)).collect(Collectors.toList());
     }
 }
