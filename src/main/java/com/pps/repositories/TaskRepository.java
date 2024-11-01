@@ -49,8 +49,7 @@ public class TaskRepository implements TaskInterface {
     public Task addTask(String description) {
         Task newTask = new Task(description);
         tasks.add(newTask);
-        System.out.println("Task add successfully :");
-        System.out.println(newTask);
+        System.out.println("Task add successfully (ID: " + newTask.getId() + ")");
         this.saveTask();
         return newTask;
     }
