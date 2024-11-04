@@ -23,7 +23,7 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void updateTaskDescription(String newDescription) {
+    public void updateTaskDescription(int id, String newDescription) {
         this.description = newDescription;
         this.updatedAt = LocalDateTime.now();
     }

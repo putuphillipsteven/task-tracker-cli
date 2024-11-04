@@ -2,6 +2,7 @@ package com.pps.repositories;
 
 import com.pps.entities.Task;
 import com.pps.entities.TaskStatus;
+import com.pps.exception.TaskNotFoundException;
 import com.pps.interfaces.TaskInterface;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class TaskRepository implements TaskInterface {
@@ -23,13 +25,15 @@ public class TaskRepository implements TaskInterface {
         List<Task> taskFromJSON = new ArrayList<>();
 
         if(!Files.exists(FILE_PATH)) {
+            /*
+            * Those code means if nothing file found it will make a new file
+            * How the file created? with a createTask() function.
+            * */
             System.out.println("File not found, system will make a new files for you.");
 
             this.tasks = new ArrayList<>();
 
             this.createTask("First default Task");
-
-            return new ArrayList<>();
         }
 
 
@@ -70,13 +74,26 @@ public class TaskRepository implements TaskInterface {
     }
 
     @Override
-    public List<Task> updateTask(int id, String description) {
-        return List.of();
+    public Optional<Task> getTaskById(int id) {
+        return tasks.stream().filter((task -> task.getId() == id)).findFirst();
     }
 
     @Override
-    public List<Task> updateTaskStatus(int id) {
-        return List.of();
+    public Task updateTaskDescription(int id, String description) {
+        var taskWantToUpdate = getTaskById(id).orElseThrow(() -> new TaskNotFoundException("Task not found!"));
+
+        taskWantToUpdate.updateTaskDescription(id, description);
+
+        System.out.println("Task updated succesfully (ID: " + id + ")");
+
+        saveJsonFile();
+
+        return getTaskById(id).orElseThrow(() -> new TaskNotFoundException("Task not found!"));
+    }
+
+    @Override
+    public Task updateTaskStatus(int id) {
+        return null;
     }
 
     @Override
