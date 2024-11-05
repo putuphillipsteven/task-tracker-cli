@@ -11,8 +11,21 @@ public class TaskRepositoryTest {
 //        testGetTask();
 
 //        Testing updateTask()
-            testUpdateTask();
+//        testUpdateTask();
 
+//        Testing createTask()
+//        testCreateTask();
+
+//        Testing deleteTask();
+//        testDeleteTask();
+
+//        Testing updateTaskStatus();
+        updateTaskStatus();
+    }
+
+    public static void testCreateTask() {
+        taskRepository.createTask("Second Task");
+        taskRepository.createTask("Third Task");
     }
 
     public static void testGetTask() {
@@ -21,5 +34,13 @@ public class TaskRepositoryTest {
 
     public static void testUpdateTask() {
         taskRepository.updateTaskDescription(1, "Update First Task");
+    }
+
+    public static void testDeleteTask() {
+        taskRepository.deleteTask(3);
+    }
+
+    public static void updateTaskStatus() {
+        taskRepository.updateTaskStatus(2, TaskStatus.DONE);
     }
 }

@@ -12,7 +12,7 @@ public interface TaskInterface {
     List<Task> getTask(TaskStatus status);
     Optional<Task> getTaskById(int id);
     Task updateTaskDescription(int id, String description);
-    Task updateTaskStatus(int id);
+    Task updateTaskStatus(int id, TaskStatus status);
     void saveJsonFile();
     void deleteTask(int id);
 }

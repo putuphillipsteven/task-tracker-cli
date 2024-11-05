@@ -2,6 +2,8 @@ package com.pps.repositories;
 
 import com.pps.entities.Task;
 import com.pps.entities.TaskStatus;
+import com.pps.exception.InvalidTaskStatusException;
+import com.pps.exception.SameStatusException;
 import com.pps.exception.TaskNotFoundException;
 import com.pps.interfaces.TaskInterface;
 
@@ -92,8 +94,41 @@ public class TaskRepository implements TaskInterface {
     }
 
     @Override
-    public Task updateTaskStatus(int id) {
-        return null;
+    public Task updateTaskStatus(int id, TaskStatus status){
+        var taskWantToUpdate = getTaskById(id).orElseThrow(() -> new TaskNotFoundException("Task not found!"));
+
+        var taskStatusBefore = taskWantToUpdate.getStatus();
+
+        if(status.equals(taskStatusBefore)) {
+            throw new SameStatusException("Cant update if the status same like before");
+        }
+
+        try {
+        switch (status) {
+            case TaskStatus.NO_STATUS :
+                taskWantToUpdate.updateTaskStatus(TaskStatus.NO_STATUS);
+                break;
+            case TaskStatus.TO_DO:
+                taskWantToUpdate.updateTaskStatus(TaskStatus.TO_DO);
+                break;
+            case TaskStatus.IN_PROGRESS:
+                taskWantToUpdate.updateTaskStatus(TaskStatus.IN_PROGRESS);
+                break;
+            case TaskStatus.DONE:
+                taskWantToUpdate.updateTaskStatus(TaskStatus.DONE);
+                break;
+            default:
+                System.out.println("Invalid Task Status");
+                break;
+            }
+        } catch (TaskNotFoundException | InvalidTaskStatusException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Task updated succesfully (ID: " + id + ")");
+
+        saveJsonFile();
+        return getTaskById(id).orElseThrow(() -> new TaskNotFoundException("Task not found!"));
     }
 
     @Override
@@ -122,6 +157,12 @@ public class TaskRepository implements TaskInterface {
 
     @Override
     public void deleteTask(int id) {
+        var taskWantToDeleted = getTaskById(id).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 
+        tasks.remove(taskWantToDeleted);
+
+        System.out.println("Task with (ID: " + id + ") deleted successfully");
+
+        saveJsonFile();
     }
 }
