@@ -10,14 +10,13 @@ import com.pps.interfaces.TaskInterface;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 public class TaskRepository implements TaskInterface {
-    private final Path FILE_PATH = Path.of("tasks.json");
+    private final Path FILE_PATH = Path.of("data","tasks.json");
     private List<Task> tasks;
 
     public TaskRepository() {

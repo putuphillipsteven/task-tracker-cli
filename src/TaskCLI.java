@@ -1,5 +1,3 @@
-package com.pps;
-
 import com.pps.controller.TaskController;
 import com.pps.entities.TaskStatus;
 import com.pps.interactor.TaskInteractor;
