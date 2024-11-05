@@ -10,3 +10,10 @@
 1. Please check if shown a file named tasks.json in `src/data`(if not, [contact me](https://putuphillipsteven.netlify.app/contact) please). 
 1. If you want to see all command list you can type `java TaskCLI.java list`
 1. Ill be updating all the command in this README.md. If you have any feedback on my code, please let me know. Im new to java. Thanks(also if you had problem when run this code, please [contact me](https://putuphillipsteven.netlify.app/contact))
+
+# My thanks
+Thank you for: 
+- [Le Phuoc Loc](https://github.com/lephuocloc1729)
+- [Farnam Hasanzadeh](https://github.com/Farnam-Hs)
+
+Ive seen many code on their task-tracker-cli repo for my learning process.
