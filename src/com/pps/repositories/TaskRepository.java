@@ -10,6 +10,7 @@ import com.pps.interfaces.TaskInterface;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,25 +37,40 @@ public class TaskRepository implements TaskInterface {
             this.tasks = new ArrayList<>();
 
             this.createTask("First default Task");
+
         }
 
 
         try {
             String jsonContent = Files.readString(FILE_PATH);
-            String[] taskLists = jsonContent.replace("[", "").replace("]", "").split("},");
 
-            for(var taskJson: taskLists) {
-                if(!taskJson.endsWith("}")) {
-                    taskJson = taskJson + "}";
-                    taskFromJSON.add(Task.fromJson(taskJson));
-                } else {
-                    taskFromJSON.add(Task.fromJson(taskJson));
+            if(jsonContent.length() <= 10) {
+                System.out.println("File is empty, system will make a new tasks for you.");
+
+                this.tasks = new ArrayList<>();
+
+                this.createTask("First default Task");
+
+                this.getTask(TaskStatus.NO_STATUS);
+            }
+
+            if(jsonContent.length() > 10) {
+                String[] taskLists = jsonContent.replace("[", "").replace("]", "").split("},");
+                for(var taskJson: taskLists) {
+                    if(!taskJson.endsWith("}")) {
+                        taskJson = taskJson + "}";
+                        taskFromJSON.add(Task.fromJson(taskJson));
+                    } else {
+                        taskFromJSON.add(Task.fromJson(taskJson));
+                    }
+                    return taskFromJSON;
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return taskFromJSON;
+        return this.getTask(TaskStatus.NO_STATUS);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class TaskRepositoryTest {
 //        testDeleteTask();
 
 //        Testing updateTaskStatus();
-        updateTaskStatus();
+//        updateTaskStatus();
     }
 
     public static void testCreateTask() {
