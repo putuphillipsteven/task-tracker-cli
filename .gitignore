@@ -27,3 +27,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Class ###
+*.class
+
+### Tasks.json ###
+/src/data/tasks.json

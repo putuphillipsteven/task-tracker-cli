@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b98db8c-d15d-4dc9-9e54-d10162aa4fb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/pps/exception/SameStatusException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pps/interfaces/TaskInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pps/interfaces/TaskInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pps/repositories/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pps/repositories/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TaskRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TaskRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
